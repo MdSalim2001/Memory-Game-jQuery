@@ -6,6 +6,7 @@ var userClickedPattern = [];
 
 var started = false;
 var level = 0;
+var highScore = 0;
 
 $(document).keydown(function() {
   if (!started) {
@@ -40,6 +41,10 @@ function checkAnswer(currentLevel) {
       if (userClickedPattern.length === gamePattern.length){
 
         $("#level-title").text("Good JOB!!!");
+        if(level > highScore){
+            $("#level-titles").text("High Score:" + level);
+            highScore = level;
+        }
         setTimeout(function () {
           nextSequence();
         }, 1000);
